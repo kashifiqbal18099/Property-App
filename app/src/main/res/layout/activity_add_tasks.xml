@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.fyp.propertydealerapp.model.TasksModel" />
+
+        <variable
+            name="clickHandlers"
+            type="com.fyp.propertydealerapp.util.ClickHandlers" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.tasks.AddTasksActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/appBlue"
+            app:title="Add Task"
+            android:id="@+id/toolBar"
+            app:titleTextColor="@color/white"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolBar"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Type"
+                    android:text="@={viewmodel.propertyType}" />
+
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/users_spinner"
+                    style="@style/spinner_style"
+                    android:layout_marginTop="@dimen/_10sdp"
+
+
+                    />
+
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Size"
+                    android:text="@={viewmodel.propertySize}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Number"
+                    android:text="@={viewmodel.propertyNumber}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Owner Name"
+                    android:text="@={viewmodel.propertyOwnerName}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Owner Phone Number"
+                    android:text="@={viewmodel.propertyOwnerPhone}" />
+
+                <EditText
+                    android:id="@+id/completionDateEdt"
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:editable="false"
+                    android:hint="Completion Date"
+                    android:onClick="@{clickHandlers::onClick}"
+                    android:text="@={viewmodel.completetionDate}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Tasks Details (Optional)"
+                    android:text="@={viewmodel.taskDetails}" />
+
+
+                <Button
+                    android:id="@+id/add_task_btn"
+                    style="@style/LoginButtonStyle"
+                    android:layout_marginLeft="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_50sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:onClick="@{clickHandlers::onClick}"
+                    android:text="Add Agent"
+                    android:textSize="@dimen/_10sdp" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+    </RelativeLayout>
+
+</layout>

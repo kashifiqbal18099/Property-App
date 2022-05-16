@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="clickHandlers"
+            type="com.fyp.propertydealerapp.util.ClickHandlers" />
+    </data>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.dashboard.AdminDashboard">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/appBlue"
+        app:menu="@menu/toolbar_menu"
+        app:title="Admin Dashboard"
+        android:id="@+id/toolBar"
+
+        app:titleTextColor="@color/white"
+        >
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolBar"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/_80sdp"
+        android:layout_marginRight="@dimen/_80sdp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/add_agent_btn"
+            style="@style/LoginButtonStyle"
+            android:textSize="@dimen/_10sdp"
+            android:text="Add Agents"
+            android:onClick="@{clickHandlers::onClick}"
+            />
+
+
+        <Button
+            style="@style/LoginButtonStyle"
+            android:id="@+id/add_post_btn"
+            android:onClick="@{clickHandlers::onClick}"
+            android:textSize="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Add Task"
+            />
+
+        <Button
+            style="@style/LoginButtonStyle"
+            android:onClick="@{clickHandlers::onClick}"
+            android:textSize="@dimen/_10sdp"
+            android:id="@+id/btn_see_posts"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="See All Tasks"
+            />
+
+
+
+
+
+    </LinearLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/_20sdp"
+        android:src="@android:drawable/stat_notify_chat"
+        />
+
+
+
+</RelativeLayout>
+
+
+
+</layout>

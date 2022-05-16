@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="loginViewmodel"
+            type="com.fyp.propertydealerapp.viewmodels.LoginViewModel" />
+        <variable
+            name="clickHandlers"
+            type="com.fyp.propertydealerapp.util.ClickHandlers" />
+    </data>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.onboarding.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/appBlue"
+            android:textSize="@dimen/_20sdp"
+
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="Login"
+            />
+
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginTop="@dimen/_20sdp"
+              android:layout_marginLeft="@dimen/_10sdp"
+              android:layout_marginRight="@dimen/_10sdp"
+              >
+
+              <EditText
+                  android:height="@dimen/_40sdp"
+                  android:hint="Email"
+                  android:text="@={loginViewmodel.email}"
+                  style="@style/EditTextLogin"
+                  />
+              <EditText
+                  android:layout_marginTop="@dimen/_20sdp"
+                  android:hint="Password"
+                  android:inputType="textPassword"
+                  android:text="@={loginViewmodel.password}"
+                  style="@style/EditTextLogin"
+                  />
+
+
+              <Button
+                  android:layout_marginTop="@dimen/_20sdp"
+                  style="@style/LoginButtonStyle"
+                  android:text="Login"
+                  android:onClick="@{clickHandlers::onClick}"
+                  />
+
+          </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
+</layout>

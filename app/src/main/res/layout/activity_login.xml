@@ -45,22 +45,43 @@
               <EditText
                   android:height="@dimen/_40sdp"
                   android:hint="Email"
+                  android:id="@+id/email"
                   android:text="@={loginViewmodel.email}"
                   style="@style/EditTextLogin"
                   />
               <EditText
                   android:layout_marginTop="@dimen/_20sdp"
                   android:hint="Password"
+                  android:id="@+id/password"
                   android:inputType="textPassword"
                   android:text="@={loginViewmodel.password}"
                   style="@style/EditTextLogin"
                   />
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/forgotPassword"
+                  android:onClick="@{clickHandlers::onClick}"
+                  android:layout_marginTop="@dimen/_10sdp"
+                  android:gravity="right"
+                  >
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Forgot Password"
+                      android:gravity="right"
+                      android:textColor="@color/appBlue"
+                      />
+              </LinearLayout>
 
 
               <Button
                   android:layout_marginTop="@dimen/_20sdp"
                   style="@style/LoginButtonStyle"
                   android:text="Login"
+                  android:id="@+id/login_btn"
                   android:onClick="@{clickHandlers::onClick}"
                   />
 

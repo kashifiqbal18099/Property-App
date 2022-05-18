@@ -5,24 +5,46 @@
       <map>
         <entry key="../../../../layout/compose-model-1652173152413.xml" value="0.335" />
         <entry key="../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/drawable-v24/baseline_done_24.xml" value="0.1635" />
+        <entry key="app/src/main/res/drawable-v24/button_layout.xml" value="0.1635" />
+        <entry key="app/src/main/res/drawable-v24/button_send.xml" value="0.1635" />
+        <entry key="app/src/main/res/drawable/accept_reject_button.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/customprogressbar.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_power.xml" value="0.1635" />
         <entry key="app/src/main/res/drawable/rounded_edit_text.xml" value="0.1635" />
+        <entry key="app/src/main/res/drawable/send_msg_ic.xml" value="0.2005" />
+        <entry key="app/src/main/res/drawable/single_message_text_background.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/spinner_bg.xml" value="0.1635" />
         <entry key="app/src/main/res/layout/activity_add_agents.xml" value="0.15989583333333332" />
         <entry key="app/src/main/res/layout/activity_add_tasks.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_admin_dashboard.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_admin_task.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/layout/activity_chat2.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.11778115501519756" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_latest_messages.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_task_details.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_user_list.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/admin_task_item.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/comment_item.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/customprogress_dialog.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/layout/fragment_chat2.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/fragment_chat_list.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/fragment_completed_tasks_admin.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_completed_tasks_user.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_pending_task_admin.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_pending_task_user.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/latest_message_row.xml" value="0.18229166666666666" />
+        <entry key="app/src/main/res/layout/messge_list_item.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/row_chats.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/single_message_layout.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/spinner_view.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/user_list_item.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/user_task_item.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/toolbar_menu.xml" value="0.2421875" />
       </map>

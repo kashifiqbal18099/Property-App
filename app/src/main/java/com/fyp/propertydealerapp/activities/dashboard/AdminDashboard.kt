@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.view.View
 import com.fyp.propertydealerapp.R
 import com.fyp.propertydealerapp.activities.agents.AddAgentsActivity
+import com.fyp.propertydealerapp.activities.chat.ChatActivity
+import com.fyp.propertydealerapp.activities.chat.UserListActivity
 import com.fyp.propertydealerapp.activities.onboarding.LoginActivity
 import com.fyp.propertydealerapp.activities.tasks.AddTasksActivity
 import com.fyp.propertydealerapp.activities.tasks.AdminTaskActivity
@@ -27,6 +29,10 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
         editor = sharedPrefs!!.edit()
         setSupportActionBar(dataBinding?.toolBar!!)
         dataBinding?.clickHandlers  = this
+
+        dataBinding?.chat?.setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
+        }
     }
 
     override val layoutRes: Int
@@ -57,6 +63,8 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
         if(id==R.id.logout){
             editor?.putString("email","")
             editor?.putString("password","")
+            editor?.putString("userName","")
+            editor?.putBoolean("isAdmin",false)
             mAuth.signOut()
             this.finish()
             startActivity(Intent(this,LoginActivity::class.java))

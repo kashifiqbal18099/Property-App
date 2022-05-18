@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2.0dip"
+    android:background="@drawable/accept_reject_button"
+    android:orientation="horizontal"
+    android:padding="4.0dip">
+
+    <ImageView
+        android:id="@+id/all_user_profile_img"
+        android:layout_width="55.0dip"
+        android:layout_height="55.0dip"
+        android:layout_gravity="center"
+        android:layout_marginTop="3.0dip"
+        android:layout_marginEnd="10.0dip"
+        android:src="@drawable/no_image2"
+        android:layout_marginBottom="3.0dip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/all_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1.0dip"
+            android:layout_weight=".5"
+            android:textColor="@color/black"
+            android:textSize="18.0sp" />
+
+        <TextView
+            android:id="@+id/all_user_status"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Active now"
+            android:textSize="16.0sp"
+            android:visibility="visible" />
+    </LinearLayout>
+</LinearLayout>

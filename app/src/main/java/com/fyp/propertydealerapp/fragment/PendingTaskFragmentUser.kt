@@ -1,16 +1,21 @@
 package com.fyp.propertydealerapp.fragment
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import com.fyp.propertydealerapp.R
+import com.fyp.propertydealerapp.activities.tasks.TaskDetailsActivity
 import com.fyp.propertydealerapp.base.BaseFramnet
 import com.fyp.propertydealerapp.base.GenericAdapter
 import com.fyp.propertydealerapp.databinding.AdminTaskItemBinding
 import com.fyp.propertydealerapp.databinding.FragmentPendingTaskAdminBinding
 import com.fyp.propertydealerapp.databinding.FragmentPendingTaskUserBinding
 import com.fyp.propertydealerapp.databinding.UserTaskItemBinding
+import com.fyp.propertydealerapp.model.Comments
 import com.fyp.propertydealerapp.model.TasksModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -22,11 +27,13 @@ class PendingTaskFragmentUser : BaseFramnet<FragmentPendingTaskUserBinding>() {
     lateinit var genericAdapter:GenericAdapter<TasksModel, UserTaskItemBinding>
     var db:FirebaseFirestore  = FirebaseFirestore.getInstance()
     var list:MutableList<TasksModel>  = ArrayList()
+    var sharedPrefs: SharedPreferences?=null
     var mAuth:FirebaseAuth = FirebaseAuth.getInstance()
     override fun OnCreateView() {
         genericAdapter   =  object  : GenericAdapter<TasksModel,UserTaskItemBinding>(requireActivity(),list){
             override val layoutResId: Int
                 get() = R.layout.user_task_item
+
 
             override fun onBindData(
                 model: TasksModel,
@@ -50,7 +57,7 @@ class PendingTaskFragmentUser : BaseFramnet<FragmentPendingTaskUserBinding>() {
                     }
                     else{
                         var map: MutableMap<String, Any> = HashMap()
-                        map.put("comments", FieldValue.arrayUnion(dataBinding.commentEdt.text.toString()));
+                        map.put("comments", FieldValue.arrayUnion(Comments(dataBinding.commentEdt.text.toString(),System.currentTimeMillis().toString(),sharedPrefs?.getString("userName","")!!)))
                         db  = FirebaseFirestore.getInstance()
                         customProgressDialog?.show()
                         db.collection("Tasks").document(model.taskId).set(map, SetOptions.merge()).addOnSuccessListener {
@@ -71,10 +78,14 @@ class PendingTaskFragmentUser : BaseFramnet<FragmentPendingTaskUserBinding>() {
                 position: Int,
                 dataBinding: UserTaskItemBinding
             ) {
-
+                var intent = Intent(context, TaskDetailsActivity::class.java)
+                intent.putExtra("task",model)
+                startActivity(intent)
             }
 
         }
+
+        sharedPrefs = requireActivity().getSharedPreferences("Main", Context.MODE_PRIVATE)
         GetDataBinding()?.pendingTasksUserRec?.adapter  = genericAdapter
         getPendingTasks()
     }

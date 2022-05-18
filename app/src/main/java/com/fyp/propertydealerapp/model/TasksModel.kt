@@ -1,7 +1,11 @@
 package com.fyp.propertydealerapp.model
 
+import android.os.Parcelable
 import androidx.databinding.BaseObservable
+import kotlinx.android.parcel.Parcelize
 
+
+@Parcelize
 data class TasksModel(
     var propertyType:String="",
     var propertySize:String="",
@@ -13,7 +17,8 @@ data class TasksModel(
     var status:String="Pending",
     var taskId:String = "",
     var taskDetails:String = "",
+    var comments:List<Comments> = ArrayList<Comments>()
 
-):BaseObservable(){
+):BaseObservable(),Parcelable{
 
 }

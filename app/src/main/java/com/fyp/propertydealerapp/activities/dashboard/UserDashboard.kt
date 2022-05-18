@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.fyp.propertydealerapp.R
+import com.fyp.propertydealerapp.activities.chat.ChatActivity
 import com.fyp.propertydealerapp.activities.onboarding.LoginActivity
 import com.fyp.propertydealerapp.adapter.TabsPagerAdapterAdmin
 import com.fyp.propertydealerapp.adapter.TabsPagerAdapterUser
@@ -41,6 +42,8 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() {
             )
         )
 
+        setSupportActionBar(dataBinding?.toolBar!!)
+
 
         dataBinding?.tablayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -57,6 +60,10 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() {
 
         })
 
+        dataBinding?.chat?.setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
+        }
+
     }
 
 
@@ -72,6 +79,8 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() {
         if(id==R.id.logout){
             editor?.putString("email","")
             editor?.putString("password","")
+            editor?.putString("userName","")
+            editor?.putBoolean("isAdmin",false)
             mAuth.signOut()
             this.finish()
             startActivity(Intent(this, LoginActivity::class.java))

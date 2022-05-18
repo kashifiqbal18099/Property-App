@@ -1,19 +1,25 @@
 package com.fyp.propertydealerapp.fragment
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.view.View
 import com.fyp.propertydealerapp.R
+import com.fyp.propertydealerapp.activities.tasks.TaskDetailsActivity
 import com.fyp.propertydealerapp.base.BaseFramnet
 import com.fyp.propertydealerapp.base.GenericAdapter
 import com.fyp.propertydealerapp.databinding.FragmentCompletedTasksUserBinding
 import com.fyp.propertydealerapp.databinding.UserTaskItemBinding
+import com.fyp.propertydealerapp.model.Comments
 import com.fyp.propertydealerapp.model.TasksModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
-class CompletedTasksUserFragment : BaseFramnet<FragmentCompletedTasksUserBinding>() {
 
+class CompletedTasksUserFragment : BaseFramnet<FragmentCompletedTasksUserBinding>() {
+    var sharedPrefs: SharedPreferences?=null
     lateinit var genericAdapter: GenericAdapter<TasksModel, UserTaskItemBinding>
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     var mAuth:FirebaseAuth = FirebaseAuth.getInstance()
@@ -48,7 +54,7 @@ class CompletedTasksUserFragment : BaseFramnet<FragmentCompletedTasksUserBinding
                    }
                    else{
                        var map: MutableMap<String, Any> = HashMap()
-                       map.put("comments", FieldValue.arrayUnion(dataBinding.commentEdt.text.toString()));
+                       map.put("comments", FieldValue.arrayUnion(Comments(dataBinding.commentEdt.text.toString(),System.currentTimeMillis().toString(),sharedPrefs?.getString("userName","")!!)))
                        db  = FirebaseFirestore.getInstance()
                        customProgressDialog?.show()
                        db.collection("Tasks").document(model.taskId).set(map, SetOptions.merge()).addOnSuccessListener {
@@ -68,10 +74,13 @@ class CompletedTasksUserFragment : BaseFramnet<FragmentCompletedTasksUserBinding
                position: Int,
                dataBinding: UserTaskItemBinding
            ) {
-
+               var intent = Intent(context, TaskDetailsActivity::class.java)
+               intent.putExtra("task",model)
+               startActivity(intent)
            }
 
        }
+        sharedPrefs = requireActivity().getSharedPreferences("Main", Context.MODE_PRIVATE)
         GetDataBinding()?.completedTaskUserRec?.adapter  = genericAdapter
         getCompletedTasks()
     }

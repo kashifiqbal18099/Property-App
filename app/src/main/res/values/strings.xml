@@ -4,4 +4,13 @@
     <string name="title_activity_login">LoginActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="press_again_exit_app">Press again to exit</string>
+
+    <string name="settings_file_name">com.app.sample.fchat.temp</string>
+    <string name="error_authetication_failed">Authentication failed.</string>
+    <string name="error_could_not_connect">Could not connect</string>
+    <string name="error_login_failed">Login failed</string>
+    <string name="error_no_chat">No Chat found</string>
 </resources>

@@ -1,10 +1,12 @@
 package com.fyp.propertydealerapp.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import com.fyp.propertydealerapp.R
+import com.fyp.propertydealerapp.activities.tasks.TaskDetailsActivity
 import com.fyp.propertydealerapp.base.BaseFramnet
 import com.fyp.propertydealerapp.base.GenericAdapter
 import com.fyp.propertydealerapp.databinding.AdminTaskItemBinding
@@ -47,7 +49,9 @@ class PendingTaskFragmentAdmin : BaseFramnet<FragmentPendingTaskAdminBinding>() 
                 position: Int,
                 dataBinding: AdminTaskItemBinding
             ) {
-
+                var intent = Intent(context, TaskDetailsActivity::class.java)
+                intent.putExtra("task",model)
+                startActivity(intent)
             }
 
         }

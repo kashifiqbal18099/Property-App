@@ -13,4 +13,8 @@
     <string name="error_could_not_connect">Could not connect</string>
     <string name="error_login_failed">Login failed</string>
     <string name="error_no_chat">No Chat found</string>
+
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 </resources>

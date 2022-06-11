@@ -16,13 +16,14 @@
         android:orientation="vertical"
         >
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            app:navigationIcon="@drawable/ic_menu"
             android:layout_height="@dimen/_40sdp"
             android:background="@color/appBlue"
             app:menu="@menu/toolbar_menu"
+            app:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Admin Dashboard"
             app:titleTextColor="@color/white"/>
 
@@ -43,7 +44,7 @@
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/navFragment"
-                    android:name="com.fyp.propertydealerapp.fragment.PendingTaskFragmentAdmin"
+                    android:name="com.fyp.propertydealerapp.fragment.CompletedTasksAdminFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/fragment_completed_tasks_admin" />
@@ -70,7 +71,9 @@
             <com.google.android.material.navigation.NavigationView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:id="@+id/admin_nav_view"
                 android:layout_gravity="start"
+                app:headerLayout="@layout/admin_nav_header_layout"
                 app:menu="@menu/admin_dashboard_menu" />
 
 

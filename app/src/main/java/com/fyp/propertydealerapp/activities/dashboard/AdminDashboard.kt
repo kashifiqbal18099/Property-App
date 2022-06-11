@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.fyp.propertydealerapp.activities.chat.ChatActivity
 import com.fyp.propertydealerapp.databinding.ActivityAdminDashboardBinding
+import com.fyp.propertydealerapp.databinding.AdminNavHeaderLayoutBinding
 import com.fyp.propertydealerapp.util.ClickHandlers
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -33,12 +34,18 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
         sharedPrefs = application.getSharedPreferences("Main", Context.MODE_PRIVATE)
 
         drawerLayout = dataBinding?.myDrawerLayout
+
+       var navHeaderView  =  dataBinding?.adminNavView?.getHeaderView(0)
+        var headerBinding  = AdminNavHeaderLayoutBinding.bind(navHeaderView!!)
         editor = sharedPrefs!!.edit()
+        headerBinding.name  = sharedPrefs?.getString("userName","")
         actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, com.fyp.propertydealerapp.R.string.nav_open, com.fyp.propertydealerapp.R.string.nav_close)
         setToolbar()
         drawerLayout?.addDrawerListener(this);
         actionBarDrawerToggle?.syncState();
         dataBinding?.clickHandlers  = this
+
+
 
         dataBinding?.chat?.setOnClickListener {
             startActivity(Intent(this, ChatActivity::class.java))
@@ -63,8 +70,14 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
 
     private fun setToolbar() {
         setSupportActionBar(dataBinding?.toolBar)
-        supportActionBar?.setHomeAsUpIndicator(com.fyp.propertydealerapp.R.drawable.ic_menu)
+        dataBinding?.toolBar?.navigationIcon?.mutate().let {
+            it?.setTint(resources.getColor(R.color.white))
+            dataBinding?.toolBar?.navigationIcon  = it
+
+        }
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(com.fyp.propertydealerapp.R.drawable.ic_menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

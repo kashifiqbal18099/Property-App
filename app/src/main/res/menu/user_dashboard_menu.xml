@@ -4,16 +4,8 @@
     tools:ignore="HardcodedText">
 
     <item
-        android:id="@+id/nav_addAgents"
+        android:id="@+id/nav_see_bouns"
         android:title="Add Agents" />
-
-    <item
-        android:id="@+id/nav_addTask"
-        android:title="Add Task" />
-
-    <item
-        android:id="@+id/nav_seeAllTask"
-        android:title="See All Task" />
     <item
         android:id="@+id/nav_logout"
         android:title="Logout" />

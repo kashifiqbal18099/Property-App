@@ -50,6 +50,7 @@
         <entry key="app/src/main/res/layout/user_task_item.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/admin_dashboard_menu.xml" value="0.32083333333333336" />
         <entry key="app/src/main/res/menu/toolbar_menu.xml" value="0.2421875" />
+        <entry key="app/src/main/res/menu/user_dashboard_menu.xml" value="0.3203125" />
       </map>
     </option>
   </component>

@@ -10,7 +10,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.fyp.propertydealerapp.activities.agents.AddAgentsActivity
 import com.fyp.propertydealerapp.activities.chat.ChatActivity
+import com.fyp.propertydealerapp.activities.onboarding.LoginActivity
+import com.fyp.propertydealerapp.activities.tasks.AddTasksActivity
+import com.fyp.propertydealerapp.activities.tasks.AdminTaskActivity
 import com.fyp.propertydealerapp.databinding.ActivityAdminDashboardBinding
 import com.fyp.propertydealerapp.databinding.AdminNavHeaderLayoutBinding
 import com.fyp.propertydealerapp.util.ClickHandlers
@@ -101,6 +105,24 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
         var fragment: Fragment? = null
 
         when (menuItem.getItemId()) {
+            com.fyp.propertydealerapp.R.id.nav_addAgents->{
+                startActivity(Intent(AdminDashboard@this, AddAgentsActivity::class.java))
+            }
+            com.fyp.propertydealerapp.R.id.nav_addTask->{
+                startActivity(Intent(AdminDashboard@this, AddTasksActivity::class.java))
+            }
+            com.fyp.propertydealerapp.R.id.nav_seeAllTask->{
+                startActivity(Intent(AdminDashboard@this, AdminTaskActivity::class.java))
+            }
+            com.fyp.propertydealerapp.R.id.nav_logout->{
+                editor?.putString("email","")
+                editor?.putString("password","")
+                editor?.putString("userName","")
+                editor?.putBoolean("isAdmin",false)
+                mAuth.signOut()
+                this.finish()
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
 
         }
 

@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:background="@color/appBlue"
-        app:menu="@menu/toolbar_menu"
         app:title="User Dashboard"
         android:id="@+id/toolBar"
         app:titleTextColor="@color/white"
@@ -26,21 +25,51 @@
         android:layout_below="@+id/toolBar"
         android:layout_height="wrap_content"/>
 
-    <androidx.viewpager.widget.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pager"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/my_drawer_layout"
         android:layout_width="match_parent"
+        android:layout_below="@+id/toolBar"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tablayout"></androidx.viewpager.widget.ViewPager>
+        tools:context=".MainActivity"
+        tools:ignore="HardcodedText">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/chat"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/_20sdp"
-        android:src="@android:drawable/stat_notify_chat"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activities.dashboard.AdminDashboard">
+
+
+            <androidx.viewpager.widget.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/chat"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/_20sdp"
+                android:src="@android:drawable/stat_notify_chat"
+                />
+
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/admin_nav_view"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/admin_nav_header_layout"
+            app:menu="@menu/user_dashboard_menu" />
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
 
 </RelativeLayout>
 </layout>

@@ -6,19 +6,31 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.fyp.propertydealerapp.R
+import com.fyp.propertydealerapp.activities.agents.AddAgentsActivity
 import com.fyp.propertydealerapp.activities.chat.ChatActivity
 import com.fyp.propertydealerapp.activities.onboarding.LoginActivity
+import com.fyp.propertydealerapp.activities.tasks.AddTasksActivity
+import com.fyp.propertydealerapp.activities.tasks.AdminTaskActivity
 import com.fyp.propertydealerapp.adapter.TabsPagerAdapterAdmin
 import com.fyp.propertydealerapp.adapter.TabsPagerAdapterUser
 import com.fyp.propertydealerapp.databinding.ActivityDashboardBinding
+import com.fyp.propertydealerapp.databinding.AdminNavHeaderLayoutBinding
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.kashif.veterinarypharmacy.base.BaseActivity
 
-class UserDashboard : BaseActivity<ActivityDashboardBinding>() {
+class UserDashboard : BaseActivity<ActivityDashboardBinding>() , NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
     private var mAdaterUser: TabsPagerAdapterUser? = null
     var sharedPrefs: SharedPreferences?=null
+    var drawerLayout: DrawerLayout? = null
+    var actionBarDrawerToggle: ActionBarDrawerToggle? = null
     var mAuth:FirebaseAuth  = FirebaseAuth.getInstance()
     var editor: SharedPreferences.Editor?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +39,19 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() {
         sharedPrefs = application.getSharedPreferences("Main", Context.MODE_PRIVATE)
         editor = sharedPrefs!!.edit()
         mAdaterUser =  TabsPagerAdapterUser(supportFragmentManager)
+
+
+        drawerLayout = dataBinding?.myDrawerLayout
+
+        var navHeaderView  =  dataBinding?.adminNavView?.getHeaderView(0)
+        var headerBinding  = AdminNavHeaderLayoutBinding.bind(navHeaderView!!)
+        headerBinding.name  = sharedPrefs?.getString("userName","")
+        actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, com.fyp.propertydealerapp.R.string.nav_open, com.fyp.propertydealerapp.R.string.nav_close)
+        setToolbar()
+
+        drawerLayout?.addDrawerListener(this);
+        actionBarDrawerToggle?.syncState();
+
 
         dataBinding?.tablayout?.addTab( dataBinding?.tablayout?.newTab()?.setText("Pending")!!)
         dataBinding?.tablayout?.addTab( dataBinding?.tablayout?.newTab()?.setText("Completed")!!)
@@ -67,27 +92,85 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() {
     }
 
 
+    private fun setToolbar() {
+        setSupportActionBar(dataBinding?.toolBar)
+        dataBinding?.toolBar?.navigationIcon?.mutate().let {
+            it?.setTint(resources.getColor(android.R.color.white))
+            dataBinding?.toolBar?.navigationIcon  = it
+
+        }
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(com.fyp.propertydealerapp.R.drawable.ic_menu)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu);
         return true;
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        val id = item.itemId
+        /*
+          return if (actionBarDrawerToggle!!.onOptionsItemSelected(item)) {
+              true
+          } else super.onOptionsItemSelected(item)*/
+        return when (item.itemId) {
+            android.R.id.home -> {
+                //Open left menu
+                drawerLayout!!.openDrawer(GravityCompat.START)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
-        if(id==R.id.logout){
-            editor?.putString("email","")
-            editor?.putString("password","")
-            editor?.putString("userName","")
-            editor?.putBoolean("isAdmin",false)
-            mAuth.signOut()
-            this.finish()
-            startActivity(Intent(this, LoginActivity::class.java))
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+
+        var fragment: Fragment? = null
+
+        when (menuItem.getItemId()) {
+            R.id.nav_logout->{
+                editor?.putString("email","")
+                editor?.putString("password","")
+                editor?.putString("userName","")
+                editor?.putBoolean("isAdmin",false)
+                mAuth.signOut()
+                this.finish()
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+
         }
 
+        if (fragment != null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(com.fyp.propertydealerapp.R.id.navFragment, fragment)
+                .commit()
+            menuItem.setChecked(true)
+            supportActionBar?.setTitle(menuItem.getTitle())
+            drawerLayout!!.closeDrawers()
+        }
 
-        return super.onOptionsItemSelected(item);
+        return true
+
+    }
+
+    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+
+    }
+
+    override fun onDrawerOpened(drawerView: View) {
+
+    }
+
+    override fun onDrawerClosed(drawerView: View) {
+
+    }
+
+    override fun onDrawerStateChanged(newState: Int) {
+
     }
 
     override val layoutRes: Int

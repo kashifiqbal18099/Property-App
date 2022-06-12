@@ -105,18 +105,18 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() , NavigationView.
         supportActionBar?.setHomeAsUpIndicator(com.fyp.propertydealerapp.R.drawable.ic_menu)
     }
 
-   /* override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu);
+  /*  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+       // menuInflater.inflate(R.menu.toolbar_menu, menu);
         return true;
-    }
+    }*/
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        *//*
+        /*
           return if (actionBarDrawerToggle!!.onOptionsItemSelected(item)) {
               true
-          } else super.onOptionsItemSelected(item)*//*
+          } else super.onOptionsItemSelected(item)*/
         return when (item.itemId) {
             android.R.id.home -> {
                 //Open left menu
@@ -125,7 +125,7 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() , NavigationView.
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }*/
+    }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
 

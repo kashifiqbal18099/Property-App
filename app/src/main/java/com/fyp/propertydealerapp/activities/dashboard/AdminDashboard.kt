@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -46,6 +48,7 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
         actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, com.fyp.propertydealerapp.R.string.nav_open, com.fyp.propertydealerapp.R.string.nav_close)
         setToolbar()
         drawerLayout?.addDrawerListener(this);
+        dataBinding?.adminNavView?.setNavigationItemSelectedListener(this);
         actionBarDrawerToggle?.syncState();
         dataBinding?.clickHandlers  = this
 
@@ -101,6 +104,8 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+
+        Log.e("onNavigation","onNavigationItemSelected")
 
         var fragment: Fragment? = null
 
@@ -158,11 +163,11 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
 
 
     /* override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // menuInflater.inflate(R.menu.toolbar_menu, menu);
+         menuInflater.inflate(com.fyp.propertydealerapp.R.menu.admin_dashboard_menu, menu);
          return true;
-     }
+     }*/
 
-     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
          val id = item.itemId
 

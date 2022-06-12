@@ -95,7 +95,14 @@ class CompletedTasksUserFragment : BaseFramnet<FragmentCompletedTasksUserBinding
                     var taskmodel  = document.toObject(TasksModel::class.java)
                     list?.add(taskmodel!!)
                 }
-
+                if(list?.size<=0){
+                    dataBinding?.noDataFound?.visibility  = View.VISIBLE;
+                    dataBinding?.completedTaskUserRec?.visibility  = View.GONE;
+                }
+                else{
+                    dataBinding?.noDataFound?.visibility  = View.GONE;
+                    dataBinding?.completedTaskUserRec?.visibility  = View.VISIBLE;
+                }
                 genericAdapter.notifyDataSetChanged()
             }
             else{

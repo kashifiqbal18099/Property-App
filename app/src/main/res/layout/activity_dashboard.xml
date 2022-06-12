@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.dashboard.UserDashboard">
+
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:background="@color/appBlue"
         app:title="User Dashboard"
-        android:id="@+id/toolBar"
-        app:titleTextColor="@color/white"
-        />
+        app:titleTextColor="@color/white" />
 
 
     <com.google.android.material.tabs.TabLayout
@@ -28,7 +28,7 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/my_drawer_layout"
         android:layout_width="match_parent"
-        android:layout_below="@+id/toolBar"
+        android:layout_below="@+id/tablayout"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
         tools:ignore="HardcodedText">

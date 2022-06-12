@@ -105,6 +105,15 @@ class PendingTaskFragmentUser : BaseFramnet<FragmentPendingTaskUserBinding>() {
                     list?.add(taskmodel!!)
                 }
 
+
+                if(list?.size<=0){
+                    dataBinding?.noDataFound?.visibility  = View.VISIBLE;
+                    dataBinding?.pendingTasksUserRec?.visibility  = View.GONE;
+                }
+                else{
+                    dataBinding?.noDataFound?.visibility  = View.GONE;
+                    dataBinding?.pendingTasksUserRec?.visibility  = View.VISIBLE;
+                }
                 genericAdapter.notifyDataSetChanged()
             }
             else{

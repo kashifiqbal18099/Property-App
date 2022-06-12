@@ -1,6 +1,8 @@
 package com.fyp.propertydealerapp.fragment
 
 import android.content.Intent
+import android.opengl.Visibility
+import android.view.View
 import com.fyp.propertydealerapp.R
 import com.fyp.propertydealerapp.activities.tasks.TaskDetailsActivity
 import com.fyp.propertydealerapp.base.BaseFramnet
@@ -56,6 +58,14 @@ class CompletedTasksAdminFragment : BaseFramnet<FragmentCompletedTasksAdminBindi
                     list?.add(taskmodel!!)
                 }
 
+                if(list?.size<=0){
+                    dataBinding?.noDataFound?.visibility  = View.VISIBLE;
+                    dataBinding?.completedTaskAdminRec?.visibility  = View.GONE;
+                }
+                else{
+                    dataBinding?.noDataFound?.visibility  = View.GONE;
+                    dataBinding?.completedTaskAdminRec?.visibility  = View.VISIBLE;
+                }
                 genericAdapter.notifyDataSetChanged()
             }
             else{

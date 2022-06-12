@@ -5,7 +5,7 @@
 
     <item
         android:id="@+id/nav_see_bouns"
-        android:title="Add Agents" />
+        android:title="Bonus" />
     <item
         android:id="@+id/nav_logout"
         android:title="Logout" />

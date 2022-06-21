@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PropertyDealerApp"
         tools:replace="android:theme">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.chat.UserListActivity"
             android:exported="false" />
         <activity
@@ -41,10 +44,9 @@
         <activity
             android:name=".activities.dashboard.UserDashboard"
             android:exported="false" />
-
-        <activity android:name=".activities.chat.ChatMessageActivity"
-            android:exported="false"
-            />
+        <activity
+            android:name=".activities.chat.ChatMessageActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.onboarding.LoginActivity"
             android:exported="false"
@@ -60,6 +62,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.ProfileActivity" />
     </application>
 
 </manifest>

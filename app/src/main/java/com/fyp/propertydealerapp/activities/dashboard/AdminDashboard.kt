@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.fyp.propertydealerapp.activities.ProfileActivity
 import com.fyp.propertydealerapp.activities.agents.AddAgentsActivity
 import com.fyp.propertydealerapp.activities.chat.ChatActivity
 import com.fyp.propertydealerapp.activities.onboarding.LoginActivity
@@ -44,6 +45,10 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
        var navHeaderView  =  dataBinding?.adminNavView?.getHeaderView(0)
         var headerBinding  = AdminNavHeaderLayoutBinding.bind(navHeaderView!!)
         editor = sharedPrefs!!.edit()
+
+        headerBinding.userProfile.setOnClickListener {
+            startActivity(Intent(this@AdminDashboard,ProfileActivity::class.java))
+        }
         headerBinding.name  = sharedPrefs?.getString("userName","")
         actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, com.fyp.propertydealerapp.R.string.nav_open, com.fyp.propertydealerapp.R.string.nav_close)
         setToolbar()

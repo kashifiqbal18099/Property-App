@@ -17,6 +17,7 @@ data class TasksModel(
     var status:String="Pending",
     var taskId:String = "",
     var taskDetails:String = "",
+    var imageUrl:String = "",
     var comments:List<Comments> = ArrayList<Comments>()
 
 ):BaseObservable(),Parcelable{

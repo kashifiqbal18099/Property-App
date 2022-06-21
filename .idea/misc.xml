@@ -28,9 +28,11 @@
         <entry key="app/src/main/res/layout/activity_latest_messages.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.20969202898550723" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_task_details.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_user_list.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/admin_nav_header_layout.xml" value="0.20969202898550723" />
         <entry key="app/src/main/res/layout/admin_task_item.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/comment_item.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/customprogress_dialog.xml" value="0.19610507246376813" />

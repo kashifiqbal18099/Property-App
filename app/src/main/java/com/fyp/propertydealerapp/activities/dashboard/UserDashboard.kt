@@ -12,6 +12,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.fyp.propertydealerapp.R
+import com.fyp.propertydealerapp.activities.ProfileActivity
 import com.fyp.propertydealerapp.activities.agents.AddAgentsActivity
 import com.fyp.propertydealerapp.activities.chat.ChatActivity
 import com.fyp.propertydealerapp.activities.onboarding.LoginActivity
@@ -43,9 +44,12 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() , NavigationView.
 
         drawerLayout = dataBinding?.myDrawerLayout
 
-        var navHeaderView  =  dataBinding?.adminNavView?.getHeaderView(0)
-        var headerBinding  = AdminNavHeaderLayoutBinding.bind(navHeaderView!!)
+        val navHeaderView  =  dataBinding?.adminNavView?.getHeaderView(0)
+        val headerBinding  = AdminNavHeaderLayoutBinding.bind(navHeaderView!!)
         headerBinding.name  = sharedPrefs?.getString("userName","")
+        headerBinding.userProfile.setOnClickListener {
+            startActivity(Intent(this@UserDashboard, ProfileActivity::class.java))
+        }
         actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, com.fyp.propertydealerapp.R.string.nav_open, com.fyp.propertydealerapp.R.string.nav_close)
         setToolbar()
 

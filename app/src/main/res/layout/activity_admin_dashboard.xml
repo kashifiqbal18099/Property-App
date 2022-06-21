@@ -40,14 +40,12 @@
                 tools:context=".activities.dashboard.AdminDashboard">
 
 
-
-
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/navFragment"
-                    android:name="com.fyp.propertydealerapp.fragment.CompletedTasksAdminFragment"
+                    android:name="com.fyp.propertydealerapp.fragment.PendingTaskFragmentAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:layout="@layout/fragment_completed_tasks_admin" />
+                    tools:layout="@layout/fragment_pending_task_admin" />
 
 
 

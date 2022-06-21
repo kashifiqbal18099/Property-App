@@ -9,6 +9,8 @@
         <variable
             name="clickHandlers"
             type="com.fyp.propertydealerapp.util.ClickHandlers" />
+
+        <import type="android.view.View"/>
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -47,13 +49,38 @@
                     android:text="@={viewmodel.propertyType}" />
 
 
-                <androidx.appcompat.widget.AppCompatSpinner
+               <!-- <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/users_spinner"
                     style="@style/spinner_style"
                     android:layout_marginTop="@dimen/_10sdp"
 
 
-                    />
+                    />-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_centerInParent="true"
+                    android:hint="Select Multiple Items">
+
+                    <com.zeeshan.material.multiselectionspinner.MultiSelectionSpinner
+                        android:id="@+id/multi_Selection"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:clickable="true"
+                        android:background="@drawable/rounded_edit_text"
+                        android:focusableInTouchMode="false"
+                        android:importantForAutofill="no"
+                        android:maxLines="1"
+                        app:showSearch="true"
+                        app:sort="true"
+                        android:focusable="true" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
 
                 <EditText
@@ -88,6 +115,50 @@
                     android:hint="Completion Date"
                     android:onClick="@{clickHandlers::onClick}"
                     android:text="@={viewmodel.completetionDate}" />
+
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@color/white"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="@{viewmodel.imageUrl==`` || viewmodel.imageUrl==null  ? View.GONE : View.VISIBLE ,default=gone}"
+                    >
+                    
+                    <ImageView
+                        android:layout_width="@dimen/_200sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        app:imageurl="@{viewmodel.imageUrl}"
+
+                        />
+                    
+                </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_marginTop="@dimen/_10sdp"
+                     android:layout_height="@dimen/_100sdp"
+                     android:background="@color/grey_bg"
+                     android:visibility="@{viewmodel.imageUrl==`` || viewmodel.imageUrl==null  ? View.VISIBLE : View.GONE ,default=visible}"
+                     android:layout_gravity="center"
+
+                     android:gravity="center|bottom"
+                     >
+
+                     <Button
+                         android:layout_width="wrap_content"
+                         android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
+                         android:textAllCaps="false"
+                         android:id="@+id/uploadImage"
+                         android:text="Upload Image"
+                         />
+
+                 </LinearLayout>
+                
+
 
                 <EditText
                     style="@style/EditTextLogin"

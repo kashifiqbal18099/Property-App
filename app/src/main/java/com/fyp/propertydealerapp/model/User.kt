@@ -24,8 +24,10 @@ data class User(
     @get: PropertyName("lastName") @set: PropertyName("lastName") var lastName: String  ="",
     @ColumnInfo(name ="phoneNumber")
     @get: PropertyName("phoneNumber") @set: PropertyName("phoneNumber") var phoneNumber: String  = "",
+    @ColumnInfo(name ="phoneNumber")
+    @get: PropertyName("salary") @set: PropertyName("salary") var salary: String  = "",
 
 
     ):Parcelable{
-    constructor() : this("", "", "", false, "", "","")
+    constructor() : this("", "", "", false, "", "","","")
 }

@@ -4,6 +4,12 @@
         <variable
             name="user"
             type="com.fyp.propertydealerapp.model.User" />
+        
+        <variable
+            name="bouns"
+            type="String" />
+
+        <import type="android.view.View"/>
     </data>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,10 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:background="@color/appBlue"
-            app:theme="@style/ThemeOverlay.AppCompat.Light"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Profile"
-            app:titleTextColor="@color/white"/>
+            app:titleTextColor="@color/white" />
 
 
         <ImageView
@@ -33,71 +39,164 @@
             android:src="@drawable/unknown_avatar"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profile_pic"
-            android:text="@{user.firstName +` `+ user.lastName}"
-            android:id="@+id/name"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_centerHorizontal="true"
-            />
 
-
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{user.admin ? `Admin` : ``}"
-            android:id="@+id/isAdmin"
-            android:textColor="@color/appBlue"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/name"
-            />
-
-
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/isAdmin">
+            android:layout_below="@+id/profile_pic"
+            >
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_18sdp"
-                android:text="@{`Phone: ` + user.phoneNumber}"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:textSize="@dimen/_18sdp"
-                android:text="@{`Address: ` + user.email}"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_18sdp"
-                android:maxLines="1"
-                android:text="Address : Street 10 House 184-B E11/1"
-                />
+                android:layout_below="@+id/profile_pic"
+                >
 
-        </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@{user.firstName +` `+ user.lastName}"
+                    android:id="@+id/name"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+                    />
+
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{user.admin ? `Admin` : ``}"
+                    android:id="@+id/isAdmin"
+                    android:textColor="@color/appBlue"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/name"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/isAdmin"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{`Phone: ` + user.phoneNumber}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@{`Address: ` + user.email}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@{!user.admin ? `Salary: ` + user.salary  + ` PKR` : ``,default=``}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:visibility="@{user.admin ? View.GONE : View.VISIBLE ,default = gone }"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text="@{!user.admin ?  `Total Bouns: ` + bouns + ` PKR` : ``,default=``}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_15sdp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_gravity="center"
+                            android:text="Details"
+                            android:id="@+id/detail_txt"
+                            android:textColor="@color/appBlue"
+                            android:textSize="@dimen/_15sdp" />
+
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/address"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:maxLines="1"
+                        android:text="Address : Street 10 House 184-B E11/1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{user.admin ? View.GONE : View.VISIBLE ,default = gone}"
+                        >
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="@dimen/_50sdp"
+                            android:text="KPIS"
+                            android:textSize="@dimen/_20sdp"
+                            android:textStyle="bold"
+                            android:textColor="@color/appBlue"
+                            />
+
+
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/chart1"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_300sdp"
+                            android:layout_above="@+id/seekBar1" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
 
 
 

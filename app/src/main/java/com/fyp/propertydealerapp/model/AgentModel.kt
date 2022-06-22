@@ -10,5 +10,6 @@ data class AgentModel(
     @get: PropertyName("isAdmin") @set: PropertyName("isAdmin")  var isAdmin:Boolean = false,
     var phoneNumber:String  = "",
     var password:String  = "",
+    var salary:String  = "",
 
     )

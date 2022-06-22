@@ -15,7 +15,10 @@
         android:theme="@style/Theme.PropertyDealerApp"
         tools:replace="android:theme">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.bouns.BounsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".activities.chat.UserListActivity"
@@ -62,7 +65,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ProfileActivity" />
+
     </application>
 
 </manifest>

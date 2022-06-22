@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,7 +10,7 @@
     </data>
 
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+  &lt;!&ndash;  <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         app:cardBackgroundColor="@color/white"
         android:elevation="@dimen/_10sdp"
@@ -157,5 +157,224 @@
 
 
 
+    </androidx.cardview.widget.CardView>&ndash;&gt;
+
+
+</layout>-->
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="tasksModel"
+            type="com.fyp.propertydealerapp.model.TasksModel" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/white"
+        android:elevation="@dimen/_10sdp"
+        android:layout_margin="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_180sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/task_list_icon"
+                app:imageurl="@{tasksModel.imageUrl}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:id="@+id/divider"
+                android:background="@color/grey_bg"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@+id/image_view"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_10sdp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price: "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{tasksModel.propertyPrice}"
+                        android:textSize="@dimen/_15sdp"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address: "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{tasksModel.propertyAddress}"
+                        android:textSize="@dimen/_15sdp"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    >
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status: "
+
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp"
+                        />
+
+                    <TextView
+                        android:id="@+id/markComplete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="@{tasksModel.status}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--  <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/propertyDetails"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="@dimen/_10sdp"
+                  android:layout_marginTop="@dimen/_10sdp"
+                  android:layout_toRightOf="@id/image_view"
+                  >
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@{tasksModel.propertyType}"
+                      android:textColor="@color/black"
+                      />
+
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@{tasksModel.propertyOwnerName}"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textColor="@color/black"
+                      />
+
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@{tasksModel.propertyNumber}"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textColor="@color/black"
+                      />
+              </LinearLayout>
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_marginLeft="@dimen/_10sdp"
+                  android:layout_marginTop="@dimen/_10sdp"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/statuslayout"
+                  android:layout_centerVertical="true"
+                  android:layout_toRightOf="@+id/propertyDetails"
+                  >
+
+                  <LinearLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_gravity="center"
+                      >
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Status: "
+                          android:textStyle="bold"
+                          android:textColor="@color/red"
+                          />
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@{tasksModel.status}"
+                          android:textStyle="bold"
+                          android:textColor="@color/black"
+                          />
+                  </LinearLayout>
+
+              </LinearLayout>-->
+
+
+
+
+        </RelativeLayout>
+
+
+
     </androidx.cardview.widget.CardView>
 </layout>
+

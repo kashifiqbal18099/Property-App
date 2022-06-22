@@ -133,6 +133,9 @@ class AdminDashboard : BaseActivity<ActivityAdminDashboardBinding>(),ClickHandle
                 this.finish()
                 startActivity(Intent(this, LoginActivity::class.java))
             }
+            com.fyp.propertydealerapp.R.id.nav_profile->{
+                startActivity(Intent(this@AdminDashboard,ProfileActivity::class.java))
+            }
 
         }
 

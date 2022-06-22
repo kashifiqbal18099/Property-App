@@ -14,6 +14,10 @@
     <item
         android:id="@+id/nav_seeAllTask"
         android:title="See All Task" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile" />
     <item
         android:id="@+id/nav_logout"
         android:title="Logout" />

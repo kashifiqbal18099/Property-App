@@ -100,6 +100,20 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/salary_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorText='@{agentViewModel.formErrors.contains(AgentFormErros.MISSING_SALARY) ? "Required" : ""}'
+                >
+                <EditText
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Phone Number"
+                    android:text="@={agentViewModel.salary}"
+                    style="@style/EditTextLogin"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
 
 

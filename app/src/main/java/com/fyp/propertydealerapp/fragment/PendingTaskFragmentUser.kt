@@ -42,7 +42,7 @@ class PendingTaskFragmentUser : BaseFramnet<FragmentPendingTaskUserBinding>() {
             ) {
                 dataBinding.tasksModel  = model
 
-                dataBinding.comment.setOnClickListener {
+            /*    dataBinding.comment.setOnClickListener {
                     if(dataBinding.commentLayout.visibility==View.GONE){
                         dataBinding.commentLayout.visibility  = View.VISIBLE
                     }
@@ -69,7 +69,7 @@ class PendingTaskFragmentUser : BaseFramnet<FragmentPendingTaskUserBinding>() {
                             showSnackbar(it.message!!,resources.getColor(R.color.red))
                         }
                     }
-                }
+                }*/
 
             }
 

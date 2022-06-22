@@ -1,30 +1,37 @@
 package com.fyp.propertydealerapp.activities.tasks
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.fyp.propertydealerapp.R
 import com.fyp.propertydealerapp.adapter.TabsPagerAdapterAdmin
-import com.fyp.propertydealerapp.databinding.ActivityAdminTaskBinding
+import com.fyp.propertydealerapp.base.BaseFramnet
+import com.fyp.propertydealerapp.databinding.AdminTaskItemBinding
+import com.fyp.propertydealerapp.databinding.FragmentAdminTaskBinding
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
-import com.kashif.veterinarypharmacy.base.BaseActivity
 
+class AdminTaskFragment : BaseFramnet<FragmentAdminTaskBinding>() {
 
-class AdminTaskActivity :BaseActivity<ActivityAdminTaskBinding>() {
     private var mAdapterAdmin: TabsPagerAdapterAdmin? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun OnCreateView() {
 
-   /*     mAdapterAdmin =  TabsPagerAdapterAdmin(supportFragmentManager);
+        mAdapterAdmin =  TabsPagerAdapterAdmin(activity?.supportFragmentManager);
 
         dataBinding?.tablayout?.addTab( dataBinding?.tablayout?.newTab()?.setText("Pending")!!)
         dataBinding?.tablayout?.addTab( dataBinding?.tablayout?.newTab()?.setText("Completed")!!)
         dataBinding?.tablayout?.setTabGravity(TabLayout.GRAVITY_FILL);
-        mAdapterAdmin  = TabsPagerAdapterAdmin(supportFragmentManager)
+        mAdapterAdmin  = TabsPagerAdapterAdmin(activity?.supportFragmentManager)
 
         dataBinding?.pager?.adapter  = mAdapterAdmin
 
 
-        dataBinding?.pager?.addOnPageChangeListener(TabLayoutOnPageChangeListener(dataBinding?.tablayout!!))
+        dataBinding?.pager?.addOnPageChangeListener(
+            TabLayout.TabLayoutOnPageChangeListener(
+                dataBinding?.tablayout!!
+            )
+        )
 
 
         dataBinding?.tablayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
@@ -41,13 +48,12 @@ class AdminTaskActivity :BaseActivity<ActivityAdminTaskBinding>() {
             }
 
         })
-*/
 
     }
 
+    override fun getlayout(): Int {
+       return  R.layout.fragment_admin_task
+    }
 
 
-
-    override val layoutRes: Int
-        get() = R.layout.activity_admin_task
 }

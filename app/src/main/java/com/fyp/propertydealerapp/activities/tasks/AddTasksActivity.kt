@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.fyp.propertydealerapp.BR
 import com.fyp.propertydealerapp.R
 import com.fyp.propertydealerapp.adapter.CustomeSpinnerAdapter
@@ -36,6 +37,7 @@ class AddTasksActivity : BaseActivity<ActivityAddTasksBinding>(),ClickHandlers {
        // setContentView(R.layout.activity_add_tasks)
         dataBinding?.viewmodel  = TasksModel()
         dataBinding?.clickHandlers  =this
+        dataBinding?.multiSelection?.isSort =false;
         db  = FirebaseFirestore.getInstance()
         /* userAdapter = CustomeSpinnerAdapter(
             this,
@@ -59,7 +61,8 @@ class AddTasksActivity : BaseActivity<ActivityAddTasksBinding>(),ClickHandlers {
 
         dataBinding?.multiSelection?.setOnItemSelectedListener(object : MultiSelectionSpinner.OnItemSelectedListener {
             override fun onItemSelected(view: View, isSelected: Boolean, position: Int) {
-//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+              // Toast.makeText(this@AddTasksActivity, "On Item selected : " +(userList.get(position)as User).firstName, Toast.LENGTH_SHORT).show()
+             //  Toast.makeText(this@AddTasksActivity, "On Item selected : " +userNameList.get(position), Toast.LENGTH_SHORT).show()
 
                 finalUserList.add(userList.get(position) as User)
             }
@@ -122,11 +125,14 @@ class AddTasksActivity : BaseActivity<ActivityAddTasksBinding>(),ClickHandlers {
             if(error==null){
                 for(document in value?.documents!!){
                      val user  = document.toObject(User::class.java)
-                    userNameList.add(user?.firstName!!)
-                    userList.add(user!!)
+                      userList.add(user!!)
+                    userNameList.add(user?.firstName!! +  " "   + user?.lastName)
+
 
                 }
+                Log.e("USERLIST",userNameList.toString());
                 dataBinding?.multiSelection?.items  = userNameList
+
               //  userAdapter.notifyDataSetChanged()
                // dataBinding?.usersSpinner?.setSelection(0)
             }
@@ -146,6 +152,19 @@ class AddTasksActivity : BaseActivity<ActivityAddTasksBinding>(),ClickHandlers {
         else if(task.propertySize.isNullOrEmpty()){
             showSnackbar("Please enter property size",resources.getColor(R.color.red))
         }
+        else if(task.propertyPrice.isNullOrEmpty()){
+            showSnackbar("Please enter property price",resources.getColor(R.color.red))
+        }
+        else if(task.propertyArea.isNullOrEmpty()){
+            showSnackbar("Please enter property area",resources.getColor(R.color.red))
+        }
+        else if(task.propertyAddress.isNullOrEmpty()){
+            showSnackbar("Please enter property address",resources.getColor(R.color.red))
+        }
+        else if(task.propertyPupose.isNullOrEmpty()){
+            showSnackbar("Please enter property purpose",resources.getColor(R.color.red))
+        }
+
         else if(task.propertyOwnerName.isNullOrEmpty()){
             showSnackbar("Please enter property owner name",resources.getColor(R.color.red))
         }
@@ -161,6 +180,7 @@ class AddTasksActivity : BaseActivity<ActivityAddTasksBinding>(),ClickHandlers {
         else if(task.completetionDate.isNullOrEmpty()){
             showSnackbar("Please enter completion date",resources.getColor(R.color.red))
         }
+
         else{
             addTaskFinalStep()
         }
@@ -175,6 +195,7 @@ class AddTasksActivity : BaseActivity<ActivityAddTasksBinding>(),ClickHandlers {
             var docId  =docRef.id
             dataBinding?.viewmodel?.userId  = finaluser.id!!
             dataBinding?.viewmodel?.taskId  = docId
+            dataBinding?.viewmodel?.userName  = finaluser.firstName  +" " +   finaluser.lastName
             docRef.set(dataBinding?.viewmodel!!).addOnSuccessListener {
                 customProgressDialog?.dismiss()
 

@@ -39,7 +39,7 @@ class CompletedTasksUserFragment : BaseFramnet<FragmentCompletedTasksUserBinding
                dataBinding?.tasksModel = model
 
 
-               dataBinding.comment.setOnClickListener {
+            /*   dataBinding.comment.setOnClickListener {
                    if(dataBinding.commentLayout.visibility== View.GONE){
                        dataBinding.commentLayout.visibility  = View.VISIBLE
                    }
@@ -66,7 +66,7 @@ class CompletedTasksUserFragment : BaseFramnet<FragmentCompletedTasksUserBinding
                            showSnackbar(it.message!!,resources.getColor(R.color.red))
                        }
                    }
-               }
+               }*/
            }
 
            override fun onItemClick(

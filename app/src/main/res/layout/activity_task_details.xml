@@ -25,6 +25,14 @@
         />
 
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolBar"
+        >
+
+
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         app:cardBackgroundColor="@color/white"
@@ -45,12 +53,242 @@
 
                 <ImageView
                     android:id="@+id/image_view"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    app:imageurl="@{tasksModel.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/task_list_icon" />
+                    android:src="@drawable/task_list_icon"
+                    app:imageurl="@{tasksModel.imageUrl}" />
+
+
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:weightSum="3"
+                      android:id="@+id/property_type_linear"
+                      android:gravity="center"
+                      android:layout_marginTop="@dimen/_20sdp"
+                      android:layout_below="@+id/image_view"
+                      >
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@{tasksModel.propertyType}"
+                          android:layout_gravity="center"
+                          android:textSize="@dimen/_12sdp"
+                          android:gravity="center"
+                          android:textStyle="bold"
+                          android:textColor="@color/black"
+                          android:layout_weight="1"
+                          />
+
+                       <View
+                           android:layout_width="@dimen/_1sdp"
+                           android:layout_height="@dimen/_20sdp"
+                           android:background="@color/grey_hard"
+                           />
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@{tasksModel.propertyPupose}"
+                          android:layout_gravity="center"
+                          android:textSize="@dimen/_12sdp"
+                          android:gravity="center"
+                          android:textStyle="bold"
+                          android:textColor="@color/black"
+                          android:layout_weight="1"
+                          />
+
+                      <View
+                          android:layout_width="@dimen/_1sdp"
+                          android:layout_height="@dimen/_20sdp"
+                          android:background="@color/grey_hard"
+                          />
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@{tasksModel.propertyPrice + ` PKR`}"
+                          android:layout_gravity="center"
+                          android:textSize="@dimen/_12sdp"
+                          android:gravity="center"
+                          android:textStyle="bold"
+                          android:textColor="@color/black"
+                          android:layout_weight="1"
+                          />
+
+                      <View
+                          android:layout_width="@dimen/_1sdp"
+                          android:layout_height="@dimen/_20sdp"
+                          android:background="@color/grey_hard"
+                          />
+
+
+                  </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/propert_addresss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/property_type_linear"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:maxLines="3"
+                    android:text="@{tasksModel.propertyAddress}" />
+
+
+                <TextView
+                    android:id="@+id/propert_overview_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/propert_addresss"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:maxLines="3"
+                    android:text="Property Overview"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:gravity="center"
+                     android:id="@+id/property_overview_linear"
+                     android:layout_marginLeft="@dimen/_10sdp"
+                     android:layout_marginRight="@dimen/_10sdp"
+                     android:layout_marginTop="@dimen/_20sdp"
+                     android:layout_below="@+id/propert_overview_txt"
+                     >
+
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="horizontal"
+                         android:layout_gravity="center"
+                         android:gravity="center"
+                         android:weightSum="2"
+                         >
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="@{tasksModel.propertyNumber}"
+                             android:layout_gravity="center"
+                             android:layout_weight="1"
+                             android:textSize="@dimen/_12sdp"
+                             />
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="@{tasksModel.serventRooms + ` Servant Room`}"
+
+                             android:layout_weight="1"
+                             android:textSize="@dimen/_12sdp"
+                             />
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="horizontal"
+                         android:layout_gravity="center"
+                         android:layout_marginTop="@dimen/_10sdp"
+                         android:gravity="center"
+                         android:weightSum="2"
+                         >
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="@{tasksModel.bedRooms + ` Bed`}"
+                             android:layout_gravity="center"
+                             android:layout_weight="1"
+                             android:textSize="@dimen/_12sdp"
+                             />
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="@{tasksModel.bathRooms + ` Baths`}"
+
+                             android:layout_weight="1"
+                             android:textSize="@dimen/_12sdp"
+                             />
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/propert_description_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/property_overview_linear"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:maxLines="3"
+                    android:text="Property Description"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/propert_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/propert_description_txt"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:maxLines="3"
+                    android:text="@{tasksModel.taskDetails}" />
+
+
+
+
+                <TextView
+                    android:id="@+id/owner_overview_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/propert_description"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:maxLines="3"
+                    android:text="Owner Overview"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/owner_overview_txt"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@{tasksModel.propertyOwnerName}"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@{tasksModel.propertyOwnerPhone}"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                </LinearLayout>
+
+
+
+
+
+
+                <!--<LinearLayout
                     android:layout_width="wrap_content"
                     android:orientation="vertical"
                     android:id="@+id/propertyDetails"
@@ -117,7 +355,7 @@
                             />
                     </LinearLayout>
 
-                </LinearLayout>
+                </LinearLayout>-->
 
 
 
@@ -152,6 +390,42 @@
 
 
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:paddingBottom="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_weight="2"
+                    android:id="@+id/comment_edt"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Comments" />
+
+                <ImageView
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:id="@+id/send"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/send"
+                    />
+
+            </LinearLayout>
+
+
+
         </LinearLayout>
 
 
@@ -159,6 +433,8 @@
 
 
     </androidx.cardview.widget.CardView>
+
+    </ScrollView>
 
 
 

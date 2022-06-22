@@ -18,6 +18,7 @@ class AgentViewModel(application: Application) : AndroidViewModel(application) {
     var phoneNumber: ObservableField<String>? = ObservableField<String>("")
     var firstName: ObservableField<String>? = ObservableField<String>("")
     var lastName: ObservableField<String>? = ObservableField<String>("")
+    var salary: ObservableField<String>? = ObservableField<String>("")
 
     val formErrors = ObservableArrayList<AgentFormErros>()
     fun isFormValid(): Boolean {
@@ -31,6 +32,9 @@ class AgentViewModel(application: Application) : AndroidViewModel(application) {
             formErrors.add(AgentFormErros.MISSING_EMAIL)
         } else if(phoneNumber?.get()?.isNullOrEmpty()!!) {
             formErrors.add(AgentFormErros.MISSING_PHONE)
+        }
+        else if(salary?.get()?.isNullOrEmpty()!!) {
+            formErrors.add(AgentFormErros.MISSING_SALARY)
         }
         // all the other validation you require
         return formErrors.isEmpty()
@@ -49,6 +53,7 @@ class AgentViewModel(application: Application) : AndroidViewModel(application) {
         agent.lastName = lastName?.get()!!
         agent.password = "Agent@123"
         agent.phoneNumber = phoneNumber?.get()!!
+        agent.salary  = salary?.get()!!
 
         agentRepository.addAgent(completion = completion, onError = onError, agent = agent)
     }
@@ -60,5 +65,6 @@ enum class AgentFormErros {
     MISSING_FIRSTNAME,
     MISSING_LASTNAME,
     MISSING_PHONE,
+    MISSING_SALARY,
     MISSING_EMAIL,
 }

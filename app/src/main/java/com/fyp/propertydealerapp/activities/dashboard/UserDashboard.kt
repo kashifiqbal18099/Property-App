@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.fyp.propertydealerapp.R
 import com.fyp.propertydealerapp.activities.ProfileActivity
 import com.fyp.propertydealerapp.activities.agents.AddAgentsActivity
+import com.fyp.propertydealerapp.activities.bouns.BounsActivity
 import com.fyp.propertydealerapp.activities.chat.ChatActivity
 import com.fyp.propertydealerapp.activities.onboarding.LoginActivity
 import com.fyp.propertydealerapp.activities.tasks.AddTasksActivity
@@ -145,8 +146,15 @@ class UserDashboard : BaseActivity<ActivityDashboardBinding>() , NavigationView.
                 this.finish()
                 startActivity(Intent(this, LoginActivity::class.java))
             }
+            com.fyp.propertydealerapp.R.id.nav_profile->{
+                startActivity(Intent(this@UserDashboard,ProfileActivity::class.java))
+            }
+            com.fyp.propertydealerapp.R.id.nav_see_bouns->{
+                startActivity(Intent(this@UserDashboard,BounsActivity::class.java))
+            }
 
         }
+
 
         if (fragment != null) {
             supportFragmentManager

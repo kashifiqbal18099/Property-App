@@ -42,7 +42,7 @@
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/navFragment"
-                    android:name="com.fyp.propertydealerapp.fragment.PendingTaskFragmentAdmin"
+                    android:name="com.fyp.propertydealerapp.activities.tasks.AdminTaskFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/fragment_pending_task_admin" />

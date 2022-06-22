@@ -75,7 +75,6 @@
                         android:importantForAutofill="no"
                         android:maxLines="1"
                         app:showSearch="true"
-                        app:sort="true"
                         android:focusable="true" />
 
 
@@ -88,6 +87,59 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:hint="Property Size"
                     android:text="@={viewmodel.propertySize}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Price"
+                    android:text="@={viewmodel.propertyPrice}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Area"
+                    android:text="@={viewmodel.propertyArea}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Address"
+                    android:text="@={viewmodel.propertyAddress}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Property Purpose"
+                    android:text="@={viewmodel.propertyPupose}" />
+
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Bed Rooms"
+                    android:text="@={viewmodel.bedRooms}" />
+
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Bath Rooms"
+                    android:text="@={viewmodel.bathRooms}" />
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Dining Rooms"
+                    android:text="@={viewmodel.diningRooms}" />
+
+
+                <EditText
+                    style="@style/EditTextLogin"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="Servent Rooms"
+                    android:text="@={viewmodel.serventRooms}" />
+
+
 
                 <EditText
                     style="@style/EditTextLogin"
@@ -176,7 +228,7 @@
                     android:layout_marginRight="@dimen/_50sdp"
                     android:layout_marginBottom="@dimen/_20sdp"
                     android:onClick="@{clickHandlers::onClick}"
-                    android:text="Add Agent"
+                    android:text="Add Task"
                     android:textSize="@dimen/_10sdp" />
 
 

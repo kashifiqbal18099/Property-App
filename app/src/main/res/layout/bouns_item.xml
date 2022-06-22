@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="bouns"
+            type="com.fyp.propertydealerapp.model.Bouns" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/month"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/appBlue"
+            android:text="@{bouns.month}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bouns_txt"
+            android:layout_toRightOf="@+id/month"
+            android:layout_below="@+id/month"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/black"
+            android:text="@{bouns.bouns + ` PKR`}"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/bouns_txt"
+            android:background="@color/grey_bg"
+            />
+
+
+
+    </RelativeLayout>
+</layout>
